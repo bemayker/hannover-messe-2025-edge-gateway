@@ -1,36 +1,72 @@
 # Hannover Messe 2025: UNS In A Box
 
-## Raspberry Pi Setup
+## Requirements
 
-### Requirements
+## Walkthrough
 
-#### Hardware
+### Formatting the SD Card
 
-<!-- Check if this is correct -->
-- Raspberry Pi 4 Model
-- Micro SD Card (32GB)
-- Power Supply (5V 3A)
-- Cooling Fan
+Use a disk utility tool to format the SD Card with the following settings:
+    - Partition Scheme: GUID
+    - File System: FAT32
 
-#### Software
+### Flashing the OS to the SD Card
 
-<!-- Check if this is correct -->
-- Raspberry Pi OS (64-bit)
-- Docker
-- Node-RED
+Use the Raspberry Pi Imager to flash the OS to the SD Card. You can download it
+from [here](https://www.raspberrypi.org/software/). Pick the Raspberry Pi OS
+Lite (64-bit) image and follow the instructions to flash the OS to the SD Card.
 
-### Walkthrough
+Use the following settings:
 
-#### Formatting the SD Card
+- Hostname: `raspberrypi.local`
+- Username: `mayker`
+- Password: `Mayker@123!`
+- Enable SSH (with password)
 
-#### Flashing the OS to the SD Card
+### Connecting to the Raspberry Pi
 
-- hostname: `uns.local`
-- username: `uns`
-- password: `HannoverMesse2025`
+Establish a wired ethernet connection between the Raspberry Pi and your
+computer. The Raspberry Pi will automatically obtain an IP address via DHCP,
+which will be displayed in the terminal of the Raspberry Pi after startup.
 
-#### Connecting to the Raspberry Pi
+Use one of the following commands to connect to the Raspberry Pi:
 
-- `ssh uns@uns.local`
-- `sudo raspi-config`
+```bash
+ssh mayker@raspberrypi.local
+```
 
+```bash
+ssh mayker@192.168.1.100    # Replace with the IP address of the Raspberry Pi
+```
+
+### [Optional] Configure WiFi
+
+If a message is displayed about the localisation (country) of the Raspberry Pi
+not being set, blocking Wi-Fi from working, you can set the localisation via the
+Raspberry Pi Configuration tool.
+
+```bash
+sudo raspi-config
+```
+
+Select `Localisation Options` and then `WLAN Country`. Select an appropriate
+country, e.g. `United States` and select `OK`.
+
+Next, use the Network Manager TUI to configure the WiFi connection.
+
+```bash
+sudo nmtui
+```
+
+Select `Edit a connection` and then select `Add`. Select `Wi-Fi` and select `Create`.
+Enter the network name and password.
+
+Select `Activate a connection` and then select the network you just added.
+
+### Installing Docker
+
+Use the following command to install Docker and Docker Compose:
+
+```bash
+sudo apt-get install docker.io docker-compose
+```
