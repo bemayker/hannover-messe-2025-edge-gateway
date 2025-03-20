@@ -1,6 +1,39 @@
-# Docker Compose File for the Raspberry Pi IoT Gateway
+name: hannover-messe-iot-edge
+services:
+    # HiveMQ - MQTT Broker
+    hivemq:
+        image: hivemq/hivemq-ce:2025.1
+        container_name: hivemq
+        restart: unless-stopped
+        ports:
+            - "1883:1883" # MQTT
+            - "8883:8883" # MQTT over TLS
+            - "8080:8080" # HiveMQ Control Center
+        environment:
+            HIVEMQ_LOG_LEVEL: ${HIVEMQ_LOG_LEVEL:-INFO}
+        volumes:
+            - ./hivemq/data:/opt/hivemq/data
+            - ./hivemq/conf:/opt/hivemq/conf
+            - ./hivemq/log:/opt/hivemq/log
+            - ./hivemq/cert:/opt/hivemq/cert:ro
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8080/api/v1/health"]
+            interval: 30s
+            timeout: 10s
+            retries: 3
+            start_period: 60s
 
-## Services
-
-### Node-RED
-
+    # FlowFuse Device Agent - Edge Gateway
+    # edge-gateway:
+    #     image: flowfuse/device-agent:latest
+    #     restart: unless-stopped
+    #     ports:
+    #         - "1880:1880" # Node-RED port
+    #     volumes:
+    #         - ./flowfuse-device-agent/device:/opt/flowfuse-device
+    #     healthcheck:
+    #         test: ["CMD", "curl", "-f", "http://localhost:1880"]
+    #         interval: 30s
+    #         timeout: 10s
+    #         retries: 3
+    #         start_period: 30s
