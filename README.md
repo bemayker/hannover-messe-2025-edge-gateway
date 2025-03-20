@@ -65,6 +65,12 @@ Select `Activate a connection` and then select the network you just added.
 
 ### Installing Docker
 
+First, update the package index:
+
+```bash
+sudo apt-get update
+```
+
 Use the following command to install Docker and Docker Compose:
 
 ```bash
