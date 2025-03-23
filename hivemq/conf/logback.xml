@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true"
+    scanPeriod="60 seconds">
+
+    <appender name="CONSOLE"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-30(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/opt/hivemq/log/hivemq.log</file>
+        <append>true</append>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/opt/hivemq/log/hivemq.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%-30(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="EVENT-FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/opt/hivemq/log/event.log</file>
+        <append>true</append>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>/opt/hivemq/log/event.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="event.client-connected"
+        level="INFO"
+        additivity="false">
+        <appender-ref ref="EVENT-FILE" />
+    </logger>
+
+    <logger name="event.client-disconnected"
+        level="INFO"
+        additivity="false">
+        <appender-ref ref="EVENT-FILE" />
+    </logger>
+
+    <logger name="event.message-dropped"
+        level="INFO"
+        additivity="false">
+        <appender-ref ref="EVENT-FILE" />
+    </logger>
+
+    <logger name="event.client-session-expired"
+        level="INFO"
+        additivity="false">
+        <appender-ref ref="EVENT-FILE" />
+    </logger>
+
+    <logger name="com.hivemq"
+        level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>
