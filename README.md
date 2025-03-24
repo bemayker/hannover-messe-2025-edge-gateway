@@ -1,4 +1,19 @@
-# Hannover Messe 2025: UNS In A Box
+# Hannover Messe 2025: UNS In A Box  <!-- omit in toc -->
+
+- [1. Prepare the Raspberry Pi](#1-prepare-the-raspberry-pi)
+    - [1.1. Formatting the SD Card](#11-formatting-the-sd-card)
+    - [1.2. Flashing the OS to the SD Card](#12-flashing-the-os-to-the-sd-card)
+    - [1.3. Connecting to the Raspberry Pi](#13-connecting-to-the-raspberry-pi)
+    - [1.4. \[Optional\] Configure WiFi](#14-optional-configure-wifi)
+    - [1.5. Installing Docker](#15-installing-docker)
+    - [1.6. Installing Docker Compose](#16-installing-docker-compose)
+    - [1.7. Set permissions for Docker](#17-set-permissions-for-docker)
+- [2. Using the Docker Compose file](#2-using-the-docker-compose-file)
+- [3. Accessing the services](#3-accessing-the-services)
+    - [3.1. Accessing the FlowFuse instances](#31-accessing-the-flowfuse-instances)
+    - [3.2. Accessing the MQTT Broker](#32-accessing-the-mqtt-broker)
+    - [3.3. Accessing the InfluxDB](#33-accessing-the-influxdb)
+- [4. \[Optional\] Adding a new FlowFuse instance](#4-optional-adding-a-new-flowfuse-instance)
 
 ## 1. Prepare the Raspberry Pi
 
@@ -187,3 +202,36 @@ From outside the docker cluster:
 
 > [!NOTE]
 > Use the credentials you set in the `.env` file to access the InfluxDB.
+
+## 4. [Optional] Adding a new FlowFuse instance
+
+First, prepare the folder structure for the new instance:
+
+```bash
+# Create a new folder for the instance
+mkdir flowfuse/<instance-name>
+
+# Add the data folder
+mkdir flowfuse/<instance-name>/data
+
+# Add the device.yml file and retrieve the content from the Flowfuse Cloud
+touch flowfuse/<instance-name>/device.yml
+```
+
+Then, add the instance to the `docker-compose.yml` file:
+
+```bash
+# Add the instance to the services section of the docker-compose.yml file
+<service-name>:
+    image: flowfuse/device-agent:latest
+    restart: unless-stopped
+    ports:
+        - "<port>:1880" # Node-RED port
+    volumes:
+        - ./flowfuse/<instance-name>/data:/opt/flowfuse-device
+```
+
+> [!IMPORTANT]
+> Replace `<service-name>` with the name of the service in the `docker-compose.yml` file.
+> Replace `<port>` with the port on which the service will be exposed. Ensure that the port is not already in use by another service.
+> Replace `<instance-name>` with the name of the instance. This is the name of the folder in the `flowfuse` directory.
