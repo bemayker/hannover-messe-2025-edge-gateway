@@ -8,6 +8,8 @@
   - [Installing Docker](#installing-docker)
   - [Installing Docker Compose](#installing-docker-compose)
   - [Setting permissions for Docker](#setting-permissions-for-docker)
+- [Cloning the repository](#cloning-the-repository)
+- [Adding the FlowFuse Device Agent configurations](#adding-the-flowfuse-device-agent-configurations)
 - [Using the Docker Compose file](#using-the-docker-compose-file)
 - [Accessing the services](#accessing-the-services)
   - [FlowFuse instances](#flowfuse-instances)
@@ -123,6 +125,27 @@ sudo usermod -aG docker $USER
 ```bash
 newgrp docker
 ```
+
+## Cloning the repository
+
+Clone the repository to the Raspberry Pi:
+
+```bash
+git clone https://github.com/bemayker/hannover-messe-2025-edge-gateway.git
+```
+
+Navigate to the repository and run the following command to set the necessary
+permissions:
+
+```bash
+sudo chmod -R 777 ./influxdb ./hivemq ./flowfuse
+```
+
+## Adding the FlowFuse Device Agent configurations
+
+Create remote instances in the FlowFuse Cloud for the devices you want to connect
+to the Raspberry Pi. Add the configurations for the devices to their respective
+folders in the `flowfuse` directory under the `data` folder.
 
 ## Using the Docker Compose file
 
