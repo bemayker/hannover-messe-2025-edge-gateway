@@ -19,8 +19,8 @@ Lite (64-bit) image and follow the instructions to flash the OS to the SD Card.
 Use the following settings:
 
 - Hostname: `raspberrypi.local`
-- Username: `mayker`
-- Password: `Mayker@123!`
+- Username: `admin`
+- Password: `admin`
 - Enable SSH (with password)
 
 ### Connecting to the Raspberry Pi
@@ -32,11 +32,11 @@ which will be displayed in the terminal of the Raspberry Pi after startup.
 Use one of the following commands to connect to the Raspberry Pi:
 
 ```bash
-ssh mayker@raspberrypi.local
+ssh admin@raspberrypi.local
 ```
 
 ```bash
-ssh mayker@192.168.1.100    # Replace with the IP address of the Raspberry Pi
+ssh admin@192.168.1.100    # Replace with the IP address of the Raspberry Pi
 ```
 
 ### [Optional] Configure WiFi
@@ -65,6 +65,8 @@ Select `Activate a connection` and then select the network you just added.
 
 ### Installing Docker
 
+<!-- TODO: Update instructions for docker compose using cli extension -->
+
 First, update the package index:
 
 ```bash
@@ -76,3 +78,11 @@ Use the following command to install Docker and Docker Compose:
 ```bash
 sudo apt-get install docker.io docker-compose
 ```
+
+<!-- TODO: Add warning about adding the current user to the docker group -->
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+<!-- TODO: Add warning about permissions for the container folders -->
