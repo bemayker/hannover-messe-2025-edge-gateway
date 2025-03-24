@@ -1,3 +1,5 @@
+![banner](assets/banner-mayker.jpg)
+
 # Hannover Messe 2025: UNS In A Box  <!-- omit in toc -->
 
 - [Prepare the Raspberry Pi](#prepare-the-raspberry-pi)
