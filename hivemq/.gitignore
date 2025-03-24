@@ -1,3 +1,7 @@
-data/
-log/
-cert/
+# Ignore all files in the data directory except for the .gitkeep file
+data/*
+!data/.gitkeep
+
+# Ignore all files in the log directory except for the .gitkeep file
+log/*
+!log/.gitkeep

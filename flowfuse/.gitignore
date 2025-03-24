@@ -1,0 +1,3 @@
+# Ignore all files in the data directories of each service except for the .gitkeep file
+*/data/*
+!*/data/.gitkeep

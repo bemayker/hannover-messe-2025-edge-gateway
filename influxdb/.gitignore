@@ -1,2 +1,8 @@
-config/
-data/
+# Ignore all files in the data directory except for the .gitkeep file
+data/*
+!data/.gitkeep
+
+# Ignore all files in the config directory except for the .gitkeep file
+config/*
+!config/.gitkeep
+
