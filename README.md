@@ -1,29 +1,30 @@
 # Hannover Messe 2025: UNS In A Box  <!-- omit in toc -->
 
-- [1. Prepare the Raspberry Pi](#1-prepare-the-raspberry-pi)
-    - [1.1. Formatting the SD Card](#11-formatting-the-sd-card)
-    - [1.2. Flashing the OS to the SD Card](#12-flashing-the-os-to-the-sd-card)
-    - [1.3. Connecting to the Raspberry Pi](#13-connecting-to-the-raspberry-pi)
-    - [1.4. \[Optional\] Configure WiFi](#14-optional-configure-wifi)
-    - [1.5. Installing Docker](#15-installing-docker)
-    - [1.6. Installing Docker Compose](#16-installing-docker-compose)
-    - [1.7. Set permissions for Docker](#17-set-permissions-for-docker)
-- [2. Using the Docker Compose file](#2-using-the-docker-compose-file)
-- [3. Accessing the services](#3-accessing-the-services)
-    - [3.1. Accessing the FlowFuse instances](#31-accessing-the-flowfuse-instances)
-    - [3.2. Accessing the MQTT Broker](#32-accessing-the-mqtt-broker)
-    - [3.3. Accessing the InfluxDB](#33-accessing-the-influxdb)
-- [4. \[Optional\] Adding a new FlowFuse instance](#4-optional-adding-a-new-flowfuse-instance)
+- [Prepare the Raspberry Pi](#prepare-the-raspberry-pi)
+  - [Formatting the SD Card](#formatting-the-sd-card)
+  - [Flashing the OS to the SD Card](#flashing-the-os-to-the-sd-card)
+  - [Connecting to the Raspberry Pi](#connecting-to-the-raspberry-pi)
+  - [Configuring WiFi](#configuring-wifi)
+  - [Installing Docker](#installing-docker)
+  - [Installing Docker Compose](#installing-docker-compose)
+  - [Setting permissions for Docker](#setting-permissions-for-docker)
+- [Using the Docker Compose file](#using-the-docker-compose-file)
+- [Accessing the services](#accessing-the-services)
+  - [FlowFuse instances](#flowfuse-instances)
+  - [MQTT Broker](#mqtt-broker)
+  - [InfluxDB](#influxdb)
+- [Adding another FlowFuse instance](#adding-another-flowfuse-instance)
 
-## 1. Prepare the Raspberry Pi
+## Prepare the Raspberry Pi
 
-### 1.1. Formatting the SD Card
+### Formatting the SD Card
 
 Use a disk utility tool to format the SD Card with the following settings:
-    - Partition Scheme: GUID
-    - File System: FAT32
 
-### 1.2. Flashing the OS to the SD Card
+- Partition Scheme: GUID
+- File System: FAT32
+
+### Flashing the OS to the SD Card
 
 Use the Raspberry Pi Imager to flash the OS to the SD Card. You can download it
 from [here](https://www.raspberrypi.org/software/). Pick the Raspberry Pi OS
@@ -39,7 +40,7 @@ Use the following settings:
 > You are free to change the hostname, username and password, but make sure to
 > remember them as you will need them to connect to the Raspberry Pi later.
 
-### 1.3. Connecting to the Raspberry Pi
+### Connecting to the Raspberry Pi
 
 Establish a wired ethernet connection between the Raspberry Pi and your
 computer. The Raspberry Pi will automatically obtain an IP address via DHCP,
@@ -55,7 +56,7 @@ ssh admin@raspberrypi.local
 ssh admin@192.168.1.100    # Replace with the IP address of the Raspberry Pi
 ```
 
-### 1.4. [Optional] Configure WiFi
+### Configuring WiFi
 
 If a message is displayed about the localisation (country) of the Raspberry Pi
 not being set, blocking Wi-Fi from working, you can set the localisation via the
@@ -79,7 +80,7 @@ Enter the network name and password.
 
 Select `Activate a connection` and then select the network you just added.
 
-### 1.5. Installing Docker
+### Installing Docker
 
 First, update the package index:
 
@@ -93,7 +94,7 @@ Use the following command to install Docker:
 sudo apt-get install docker.io
 ```
 
-### 1.6. Installing Docker Compose
+### Installing Docker Compose
 
 Install Docker Compose as a Docker plugin:
 
@@ -109,7 +110,7 @@ Verify the installation:
 docker compose version
 ```
 
-### 1.7. Set permissions for Docker
+### Setting permissions for Docker
 
 Add your user to the Docker group to avoid using sudo with Docker commands:
 
@@ -123,7 +124,7 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-## 2. Using the Docker Compose file
+## Using the Docker Compose file
 
 Create a `.env` file in the same directory as the `docker-compose.yml` file and
 add the following environment variables:
@@ -162,15 +163,15 @@ To stop the services, run the following command:
 docker compose down
 ```
 
-## 3. Accessing the services
+## Accessing the services
 
-### 3.1. Accessing the FlowFuse instances
+### FlowFuse instances
 
 To access either of the Node-RED instances, go the FlowFuse Dashboard and find
 the remote instance you want to access. You can find a link to the Node-RED
 editor there.
 
-### 3.2. Accessing the MQTT Broker
+### MQTT Broker
 
 To access the MQTT Broker, you can use any MQTT client. The connection details
 are:
@@ -185,7 +186,7 @@ From outside the docker cluster:
 - Host: `raspberrypi.local` or `<ip-address>`
 - Port: `1883`
 
-### 3.3. Accessing the InfluxDB
+### InfluxDB
 
 To access the InfluxDB, you can use any InfluxDB client. The connection details
 are:
@@ -203,7 +204,7 @@ From outside the docker cluster:
 > [!NOTE]
 > Use the credentials you set in the `.env` file to access the InfluxDB.
 
-## 4. [Optional] Adding a new FlowFuse instance
+## Adding another FlowFuse instance
 
 First, prepare the folder structure for the new instance:
 
