@@ -141,7 +141,7 @@ Navigate to the repository and run the following command to set the necessary
 permissions:
 
 ```bash
-sudo chmod -R 777 ./influxdb ./hivemq ./flowfuse
+sudo chmod -R 777 ./influxdb ./hivemq ./flowfuse ./telegraf
 ```
 
 ## Adding the FlowFuse Device Agent configurations
