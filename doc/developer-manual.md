@@ -1,6 +1,6 @@
 ![banner](assets/banner-mayker.jpg)
 
-# Full Installation Guide <!-- omit in toc -->
+# Developer Manual <!-- omit in toc -->
 
 - [Overview](#overview)
 - [Prepare the Raspberry Pi](#prepare-the-raspberry-pi)

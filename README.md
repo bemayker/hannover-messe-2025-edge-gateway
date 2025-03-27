@@ -4,6 +4,8 @@
 
 - [Overview](#overview)
 - [Getting started](#getting-started)
+  - [Connecting to the Raspberry Pi](#connecting-to-the-raspberry-pi)
+  - [Starting the services](#starting-the-services)
 - [Accessing the services](#accessing-the-services)
   - [FlowFuse instance(s)](#flowfuse-instances)
     - [Sensor Module (remote instance)](#sensor-module-remote-instance)
@@ -28,6 +30,30 @@ an overview of the setup:
 > for a full guide on how to install and configure the project.
 
 ## Getting started
+
+### Connecting to the Raspberry Pi
+
+Establish a wired ethernet connection between the Raspberry Pi and your
+computer. The Raspberry Pi will automatically obtain an IP address via DHCP,
+which will be displayed in the terminal of the Raspberry Pi after startup.
+
+Use one of the following commands to connect to the Raspberry Pi:
+
+```bash
+# Connect to the Raspberry Pi using the hostname
+ssh admin@raspberrypi.local
+
+# Connect to the Raspberry Pi using the IP address
+ssh admin@<ip-address>
+```
+
+> [!NOTE]
+> The default credentials are:
+>
+> - Username: `admin`
+> - Password: `admin`
+
+### Starting the services
 
 This repository was cloned to the Raspberry Pi during the installation process.
 You can locate it at `/home/admin/hannover-messe-2025-edge-gateway`.
