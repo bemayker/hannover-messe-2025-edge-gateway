@@ -6,10 +6,13 @@
   - [Formatting the SD Card](#formatting-the-sd-card)
   - [Flashing the OS to the SD Card](#flashing-the-os-to-the-sd-card)
   - [Connecting to the Raspberry Pi](#connecting-to-the-raspberry-pi)
-  - [Configuring WiFi](#configuring-wifi)
+  - [Configuring WiFi (optional)](#configuring-wifi-optional)
   - [Installing Docker](#installing-docker)
   - [Installing Docker Compose](#installing-docker-compose)
   - [Setting permissions for Docker](#setting-permissions-for-docker)
+  - [Installing the Sense HAT module](#installing-the-sense-hat-module)
+- [Installing the FlowFuse Sensor Module locally](#installing-the-flowfuse-sensor-module-locally)
+  - [Configuring the service to start on boot (optional)](#configuring-the-service-to-start-on-boot-optional)
 - [Cloning the repository](#cloning-the-repository)
 - [Adding the FlowFuse Device Agent configurations](#adding-the-flowfuse-device-agent-configurations)
 - [Using the Docker Compose file](#using-the-docker-compose-file)
@@ -61,7 +64,7 @@ ssh admin@raspberrypi.local
 ssh admin@192.168.1.100    # Replace with the IP address of the Raspberry Pi
 ```
 
-### Configuring WiFi
+### Configuring WiFi (optional)
 
 If a message is displayed about the localisation (country) of the Raspberry Pi
 not being set, blocking Wi-Fi from working, you can set the localisation via the
@@ -117,6 +120,10 @@ docker compose version
 
 ### Setting permissions for Docker
 
+> [!NOTE]
+> For reference, the following steps are taken from the [Sense HAT
+> documentation](https://www.raspberrypi.com/documentation/accessories/sense-hat.html).
+
 Add your user to the Docker group to avoid using sudo with Docker commands:
 
 ```bash
@@ -127,6 +134,69 @@ sudo usermod -aG docker $USER
 
 ```bash
 newgrp docker
+```
+
+### Installing the Sense HAT module
+
+Install the Sense HAT module:
+
+```bash
+sudo apt update && sudo apt full-upgrade
+sudo apt install sense-hat
+sudo reboot
+```
+
+Enable the I2C interface:
+
+```bash
+sudo raspi-config
+```
+
+Follow the instructions to enable the I2C interface found in this
+[article](https://www.raspberrypi-spy.co.uk/2014/11/enabling-the-i2c-interface-on-the-raspberry-pi/).
+
+Calibrate the Sense HAT:
+
+```bash
+sudo apt update
+sudo apt install octave -y
+cd
+cp /usr/share/librtimulib-utils/RTEllipsoidFit ./ -a
+cd RTEllipsoidFit
+RTIMULibCal
+```
+
+## Installing the FlowFuse Sensor Module locally
+
+> [!NOTE]
+> For reference, the following steps are taken from the [FlowFuse
+> documentation](https://flowfuse.com/docs/hardware/raspbian/).
+
+Install the FlowFuse Sensor Module's device agent:
+
+```bash
+sudo bash <(curl -sL https://raw.githubusercontent.com/FlowFuse/device-agent/main/service/raspbian-install-device-agent.sh)
+```
+
+Ensure the permissions are set correctly:
+
+```bash
+sudo chmod -R 777 /opt/flowfuse-device
+```
+
+(Re)create the remote instance's connection configuration in the FlowFuse Cloud
+and run the provided command to connect the device to the FlowFuse Cloud.
+
+### Configuring the service to start on boot (optional)
+
+```bash
+sudo systemctl enable flowfuse-device-agent.service
+```
+
+To disable the service from starting on boot, run the following command:
+
+```bash
+sudo systemctl disable flowfuse-device-agent.service
 ```
 
 ## Cloning the repository
