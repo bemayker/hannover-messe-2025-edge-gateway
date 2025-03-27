@@ -44,14 +44,14 @@ services:
         image: flowfuse/device-agent:latest
         restart: unless-stopped
         ports:
-            - "1880:1880" # Node-RED port
-        volumes:
-            - ./flowfuse/edge-gateway/data:/opt/flowfuse-device
-    # FlowFuse Device Agent - Sensor Module
-    sensor-module:
-        image: flowfuse/device-agent:latest
-        restart: unless-stopped
-        ports:
             - "1881:1880" # Node-RED port
         volumes:
-            - ./flowfuse/sensor-module/data:/opt/flowfuse-device
+            - ./flowfuse/edge-gateway/data:/opt/flowfuse-device
+    # # FlowFuse Device Agent - Sensor Module
+    # sensor-module:
+    #     image: flowfuse/device-agent:latest
+    #     restart: unless-stopped
+    #     ports:
+    #         - "1881:1880" # Node-RED port
+    #     volumes:
+    #         - ./flowfuse/sensor-module/data:/opt/flowfuse-device
