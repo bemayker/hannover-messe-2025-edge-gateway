@@ -27,6 +27,7 @@ services:
             - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUXDB_INIT_PASSWORD}
             - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_INIT_ADMIN_TOKEN}
     # Telegraf - Data Collection Agent
+    # TODO: Upgrade to latest version
     telegraf:
         image: telegraf:1.29
         restart: unless-stopped
@@ -47,11 +48,3 @@ services:
             - "1881:1880" # Node-RED port
         volumes:
             - ./flowfuse/edge-gateway/data:/opt/flowfuse-device
-    # # FlowFuse Device Agent - Sensor Module
-    # sensor-module:
-    #     image: flowfuse/device-agent:latest
-    #     restart: unless-stopped
-    #     ports:
-    #         - "1881:1880" # Node-RED port
-    #     volumes:
-    #         - ./flowfuse/sensor-module/data:/opt/flowfuse-device
