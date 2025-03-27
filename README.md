@@ -2,6 +2,7 @@
 
 # Hannover Messe 2025: UNS In A Box  <!-- omit in toc -->
 
+- [Overview](#overview)
 - [Prepare the Raspberry Pi](#prepare-the-raspberry-pi)
   - [Formatting the SD Card](#formatting-the-sd-card)
   - [Flashing the OS to the SD Card](#flashing-the-os-to-the-sd-card)
@@ -17,11 +18,19 @@
 - [Adding the FlowFuse Device Agent configurations](#adding-the-flowfuse-device-agent-configurations)
 - [Using the Docker Compose file](#using-the-docker-compose-file)
 - [Accessing the services](#accessing-the-services)
-  - [FlowFuse instances](#flowfuse-instances)
+  - [FlowFuse instance(s)](#flowfuse-instances)
   - [MQTT Broker](#mqtt-broker)
   - [InfluxDB](#influxdb)
   - [Telegraf](#telegraf)
 - [Adding another FlowFuse instance](#adding-another-flowfuse-instance)
+
+## Overview
+
+This repository describes the setup and configuration of the Raspberry Pi edge
+gateway for the Hannover Messe 2025: UNS In A Box project. The following diagram
+shows an overview of the setup:
+
+![system diagram](assets/system-diagram.png)
 
 ## Prepare the Raspberry Pi
 
@@ -261,11 +270,10 @@ docker compose down
 
 ## Accessing the services
 
-### FlowFuse instances
+### FlowFuse instance(s)
 
-To access either of the Node-RED instances, go the FlowFuse Dashboard and find
-the remote instance you want to access. You can find a link to the Node-RED
-editor there.
+To access a Node-RED instance, go the FlowFuse Dashboard and find the remote
+instance you want to access. You can find a link to the Node-RED editor there.
 
 ### MQTT Broker
 
