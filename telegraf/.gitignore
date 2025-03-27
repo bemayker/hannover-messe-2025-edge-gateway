@@ -1,0 +1,3 @@
+# Telegraf data that shouldn't be committed
+*.log
+*.tmp 

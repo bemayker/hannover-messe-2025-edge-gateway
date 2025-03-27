@@ -17,6 +17,7 @@
   - [FlowFuse instances](#flowfuse-instances)
   - [MQTT Broker](#mqtt-broker)
   - [InfluxDB](#influxdb)
+  - [Telegraf](#telegraf)
 - [Adding another FlowFuse instance](#adding-another-flowfuse-instance)
 
 ## Prepare the Raspberry Pi
@@ -228,6 +229,18 @@ From outside the docker cluster:
 
 > [!NOTE]
 > Use the credentials you set in the `.env` file to access the InfluxDB.
+
+### Telegraf
+
+Telegraf is configured to collect data from the HiveMQ MQTT broker and write it to InfluxDB. The Telegraf configuration file is located at `telegraf/config/telegraf.conf`.
+
+By default, Telegraf subscribes to all topics (`#`) on the MQTT broker and writes the data to InfluxDB. The data is stored in the bucket specified in the `.env` file with the organization and token also specified there.
+
+If you need to customize the Telegraf configuration, you can edit the configuration file and restart the service with:
+
+```bash
+docker compose restart telegraf
+```
 
 ## Adding another FlowFuse instance
 
