@@ -164,7 +164,7 @@ sudo raspi-config
 Follow the instructions to enable the I2C interface found in this
 [article](https://www.raspberrypi-spy.co.uk/2014/11/enabling-the-i2c-interface-on-the-raspberry-pi/).
 
-Calibrate the Sense HAT:
+Optionally, calibrate the Sense HAT:
 
 ```bash
 sudo apt update
