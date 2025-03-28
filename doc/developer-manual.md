@@ -129,10 +129,6 @@ docker compose version
 
 ### Setting permissions for Docker
 
-> [!NOTE]
-> For reference, the following steps are taken from the [Sense HAT
-> documentation](https://www.raspberrypi.com/documentation/accessories/sense-hat.html).
-
 Add your user to the Docker group to avoid using sudo with Docker commands:
 
 ```bash
@@ -146,6 +142,10 @@ newgrp docker
 ```
 
 ### Installing the Sense HAT module
+
+> [!NOTE]
+> For reference, the following steps are taken from the [Sense HAT
+> documentation](https://www.raspberrypi.com/documentation/accessories/sense-hat.html).
 
 Install the Sense HAT module:
 
