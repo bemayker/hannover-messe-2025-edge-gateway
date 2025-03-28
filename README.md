@@ -41,11 +41,14 @@ Use one of the following commands to connect to the Raspberry Pi:
 
 ```bash
 # Connect to the Raspberry Pi using the hostname
-ssh admin@raspberrypi.local
+ssh admin@<hostname>
 
 # Connect to the Raspberry Pi using the IP address
 ssh admin@<ip-address>
 ```
+
+> [!IMPORTANT]
+> The hostname is printed on the underside of the Raspberry Pi.
 
 > [!NOTE]
 > The default credentials are:
@@ -56,13 +59,13 @@ ssh admin@<ip-address>
 ### Starting the services
 
 This repository was cloned to the Raspberry Pi during the installation process.
-You can locate it at `/home/admin/hannover-messe-2025-edge-gateway`.
+You can locate it at `/home/admin/uns-in-a-box`.
 
 To start the services, run the following command:
 
 ```bash
 # Navigate to the repository
-cd /home/admin/hannover-messe-2025-edge-gateway
+cd /home/admin/uns-in-a-box
 
 # Start the services
 docker compose up -d
@@ -136,7 +139,7 @@ From within the docker cluster (e.g. from any of the FlowFuse instances):
 
 From outside the docker cluster:
 
-- Host: `raspberrypi.local` or `<ip-address>`
+- Host: `<hostname>` or `<ip-address>`
 - Port: `1883`
 
 ### InfluxDB
@@ -155,7 +158,7 @@ From within the docker cluster (e.g. from any of the FlowFuse instances):
 
 From outside the docker cluster:
 
-- Host: `raspberrypi.local` or `<ip-address>`
+- Host: `<hostname>` or `<ip-address>`
 - Port: `8086`
 
 > [!NOTE]

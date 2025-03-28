@@ -27,8 +27,8 @@
 ## Overview
 
 This repository describes the setup and configuration of the Raspberry Pi edge
-gateway for the Hannover Messe 2025: UNS In A Box project. The following diagram
-shows an overview of the setup:
+gateway for the UNS In A Box project. The following diagram shows an overview
+of the setup:
 
 ![system diagram](assets/system-diagram.png)
 
@@ -48,7 +48,7 @@ from [here](https://www.raspberrypi.org/software/). Pick the Raspberry Pi OS
 Lite (64-bit) image and follow the instructions to flash the OS to the SD Card
 Use the following settings:
 
-- Hostname: `raspberrypi.local`
+- Hostname: `uns-in-a-box.local`
 - Username: `admin`
 - Password: `admin`
 - Enable SSH (with password)
@@ -66,11 +66,11 @@ which will be displayed in the terminal of the Raspberry Pi after startup.
 Use one of the following commands to connect to the Raspberry Pi:
 
 ```bash
-ssh admin@raspberrypi.local
+ssh admin@uns-in-a-box.local
 ```
 
 ```bash
-ssh admin@192.168.1.100    # Replace with the IP address of the Raspberry Pi
+ssh admin@<ip-address>    # Replace with the IP address of the Raspberry Pi
 ```
 
 ### Configuring WiFi (optional)
