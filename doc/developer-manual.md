@@ -184,7 +184,7 @@ RTIMULibCal
 Install the FlowFuse Sensor Module's device agent:
 
 ```bash
-sudo bash <(curl -sL https://raw.githubusercontent.com/FlowFuse/device-agent/main/service/raspbian-install-device-agent.sh)
+bash <(curl -sL https://raw.githubusercontent.com/FlowFuse/device-agent/main/service/raspbian-install-device-agent.sh)
 ```
 
 Ensure the permissions are set correctly:
@@ -220,6 +220,10 @@ Navigate to the repository and run the following command to set the necessary
 permissions:
 
 ```bash
+# Navigate to the repository
+cd uns-in-a-box
+
+# Set the permissions
 sudo chmod -R 777 ./influxdb ./hivemq ./flowfuse ./telegraf
 ```
 
