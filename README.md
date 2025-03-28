@@ -172,10 +172,10 @@ From outside the docker cluster:
 > The default credentials are:
 >
 > - Username: `admin`
-> - Password: `admin`
+> - Password: `HannoverMesse2025`
 > - Organization: `mayker`
-> - Bucket: `iot-data`
-> - Token: `admin`
+> - Bucket: `iot_data`
+> - Token: `HannoverMesse2025`
 
 ### Telegraf
 
