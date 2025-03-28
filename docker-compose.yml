@@ -1,4 +1,4 @@
-name: hannover-messe-iot-edge
+name: uns-in-a-box
 services:
     # HiveMQ - MQTT Broker
     hivemq:

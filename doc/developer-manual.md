@@ -213,7 +213,7 @@ sudo systemctl disable flowfuse-device-agent.service
 Clone the repository to the Raspberry Pi:
 
 ```bash
-git clone https://github.com/bemayker/hannover-messe-2025-edge-gateway.git
+git clone https://github.com/bemayker/uns-in-a-box.git
 ```
 
 Navigate to the repository and run the following command to set the necessary
@@ -287,7 +287,7 @@ From within the docker cluster (e.g. from any of the FlowFuse instances):
 
 From outside the docker cluster:
 
-- Host: `raspberrypi.local` or `<ip-address>`
+- Host: `uns-in-a-box.local` or `<ip-address>`
 - Port: `1883`
 
 ### InfluxDB
@@ -302,7 +302,7 @@ From within the docker cluster (e.g. from any of the FlowFuse instances):
 
 From outside the docker cluster:
 
-- Host: `raspberrypi.local` or `<ip-address>`
+- Host: `uns-in-a-box.local` or `<ip-address>`
 - Port: `8086`
 
 > [!NOTE]

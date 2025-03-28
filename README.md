@@ -48,9 +48,8 @@ ssh admin@<ip-address>
 ```
 
 > [!IMPORTANT]
-> The hostname is printed on the underside of the Raspberry Pi.
-
-> [!NOTE]
+> **The hostname is printed on the underside of the Raspberry Pi.**
+>
 > The default credentials are:
 >
 > - Username: `admin`
@@ -58,8 +57,12 @@ ssh admin@<ip-address>
 
 ### Starting the services
 
-This repository was cloned to the Raspberry Pi during the installation process.
+[This repository](https://github.com/bemayker/uns-in-a-box.git) was cloned to the Raspberry Pi during the installation process.
 You can locate it at `/home/admin/uns-in-a-box`.
+
+> [!NOTE]
+> A QR code that links to the repository is also printed on the underside of
+> the Raspberry Pi.
 
 To start the services, run the following command:
 
@@ -169,10 +172,10 @@ From outside the docker cluster:
 > The default credentials are:
 >
 > - Username: `admin`
-> - Password: `HannoverMesse2025`
+> - Password: `admin`
 > - Organization: `mayker`
 > - Bucket: `iot-data`
-> - Token: `HannoverMesse2025`
+> - Token: `admin`
 
 ### Telegraf
 
